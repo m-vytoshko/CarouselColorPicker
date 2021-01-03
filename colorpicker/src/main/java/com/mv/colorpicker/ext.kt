@@ -3,10 +3,10 @@ package com.mv.colorpicker
 import android.graphics.*
 import android.view.MotionEvent
 
-fun Canvas.drawCircle(centerPoint: Point, radius: Float, paint: Paint) =
-    drawCircle(centerPoint.x.toFloat(), centerPoint.y.toFloat(), radius, paint)
+fun Canvas.drawCircle(centerPoint: PointF, radius: Float, paint: Paint) =
+    drawCircle(centerPoint.x, centerPoint.y, radius, paint)
 
-fun Point.isPointWithinPath(path: Path): Boolean {
+fun PointF.isPointWithinPath(path: Path): Boolean {
     val rectF = RectF()
     path.computeBounds(rectF, true)
     val boundsRegion = Region().apply {
@@ -20,7 +20,7 @@ fun Point.isPointWithinPath(path: Path): Boolean {
             )
         )
     }
-    return boundsRegion.contains(x, y)
+    return boundsRegion.contains(x.toInt(), y.toInt())
 }
 
 fun MotionEvent.actionPoint(): PointF = PointF(x, y)

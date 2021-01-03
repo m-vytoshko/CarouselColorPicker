@@ -17,7 +17,7 @@ class ColorPickerView @JvmOverloads constructor(
     private val gestureDetector = GestureDetector(context, this)
 
     private val dataSet by lazy { ArrayList<Paint>() }
-    private val center = Point()
+    private val center = PointF()
 
     var indicatorPainter: IndicatorPainter = CircleIndicatorPainter()
     var colorChangedListener: OnColorChangedListener? = null
@@ -72,7 +72,7 @@ class ColorPickerView @JvmOverloads constructor(
         shadeRotationMin = -oneSegmentHeight / 2
         shadeRotationMax = oneSegmentHeight * shadesCount - oneSegmentHeight / 2
 
-        center.set(w / 2, radiusMax.toInt())
+        center.set(w / 2f, radiusMax)
         super.onSizeChanged(w, h, oldw, oldh)
     }
 
@@ -105,7 +105,7 @@ class ColorPickerView @JvmOverloads constructor(
         indicatorPainter.drawIndicator(
             canvas,
             selectedPaint,
-            Point(center.x, oneSegmentHeight.toInt()),
+            PointF(center.x, oneSegmentHeight),
             oneSegmentHeight / 2
         )
     }
@@ -167,7 +167,7 @@ class ColorPickerView @JvmOverloads constructor(
         segmentPath.arcTo(innerRect, startAngle + sweepAngle, -sweepAngle)
 
         //Check if it is selected sement
-        if (Point(center.x, oneSegmentHeight.toInt()).isPointWithinPath(segmentPath)) {
+        if (PointF(center.x, oneSegmentHeight).isPointWithinPath(segmentPath)) {
             if (selectedPaint.color != fill.color) {
                 selectedPaint.apply {
                     color = fill.color
@@ -238,7 +238,7 @@ class ColorPickerView @JvmOverloads constructor(
         fun drawIndicator(
             canvas: Canvas,
             selectedColorPaint: Paint,
-            center: Point,
+            center: PointF,
             recommendedRadius: Float
         )
     }
