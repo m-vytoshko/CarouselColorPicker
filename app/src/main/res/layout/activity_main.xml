@@ -18,6 +18,8 @@
 
     <com.mv.colorpicker.ColorPickerView
         android:id="@+id/colorPicker"
+        app:shadesCount="5"
+        app:shadeRatio="0.05"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />

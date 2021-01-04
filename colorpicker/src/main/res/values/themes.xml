@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ColorPickerView">
+        <!-- Number of shades to be drawn for each index -->
+        <attr name="shadesCount" format="integer" />
+        <!-- % of darkening shade from given color -->
+        <attr name="shadeRatio" format="float" />
+    </declare-styleable>
+</resources>

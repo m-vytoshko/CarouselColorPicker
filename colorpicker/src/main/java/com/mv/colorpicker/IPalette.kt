@@ -2,16 +2,14 @@ package com.mv.colorpicker
 
 import android.graphics.Color
 import android.graphics.Paint
-import androidx.annotation.ColorInt
-import androidx.core.graphics.ColorUtils
 
 interface IPalette {
-    fun getPalette(): Array<Paint>
+    fun getPalette(): Collection<Paint>
 }
 
 class DefPalette : IPalette {
-    override fun getPalette(): Array<Paint> {
-        return arrayOf(
+    override fun getPalette(): List<Paint> {
+        return listOf(
             IosColor.Red1.color.toPalettePaint(),
             IosColor.Red2.color.toPalettePaint(),
             IosColor.Orange1.color.toPalettePaint(),
@@ -58,9 +56,6 @@ fun Int.toPalettePaint(): Paint {
         isAntiAlias = true
     }
 }
-
-@ColorInt
-fun Int.darken(index: Int) = ColorUtils.blendARGB(this, Color.BLACK, 0.05f * index)
 
 fun Int.toHexString(): String = Integer.toHexString(this)
 

@@ -7,10 +7,11 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.core.graphics.ColorUtils
 import kotlin.math.*
 
 class ColorPickerView @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr), GestureDetector.OnGestureListener {
@@ -34,7 +35,6 @@ class ColorPickerView @JvmOverloads constructor(
     private var shadeRotationOffset = 0f
     private var shadeRotationMax = 0f
     private var shadeRotationMin = 0f
-    private val shadesCount = 15
 
     /**
      * Taking into account that center point is shifter to the bottom
@@ -55,8 +55,31 @@ class ColorPickerView @JvmOverloads constructor(
         }
     }
 
+    //step of darkening a color shade
+    var shadeRatio = defShadeRatio
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    //
+    var shadesCount = defShadesCount
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     init {
-        populate(*DefPalette().getPalette())
+        val styleAttrs = context.obtainStyledAttributes(attrs, R.styleable.ColorPickerView)
+
+
+        shadeRatio = styleAttrs.getFloat(R.styleable.ColorPickerView_shadeRatio, defShadeRatio)
+        shadesCount = styleAttrs.getInteger(R.styleable.ColorPickerView_shadesCount, defShadesCount)
+        styleAttrs.recycle()
+
+        if (isInEditMode) {
+            populate(DefPalette().getPalette())
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -76,8 +99,9 @@ class ColorPickerView @JvmOverloads constructor(
         super.onSizeChanged(w, h, oldw, oldh)
     }
 
-    fun populate(vararg newDataSet: Paint) {
+    fun populate(newDataSet: Collection<Paint>) {
         dataSet.addAll(newDataSet)
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -246,5 +270,13 @@ class ColorPickerView @JvmOverloads constructor(
     private fun isGestureWithinColorPicker(point: PointF): Boolean {
         val possibleRadius = sqrt((center.x - point.x).pow(2) + (center.y - point.y).pow(2))
         return possibleRadius in radiusMin..radiusMax
+    }
+
+    @ColorInt
+    fun Int.darken(index: Int) = ColorUtils.blendARGB(this, Color.BLACK, 0.05f * index)
+
+    companion object {
+        private const val defShadeRatio = 0.05f
+        private const val defShadesCount = 3
     }
 }
