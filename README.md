@@ -3,7 +3,7 @@
 #### Latest version
 [![](https://jitpack.io/v/m-vytoshko/CarouselColorPicker.svg)](https://jitpack.io/#m-vytoshko/CarouselColorPicker)
 
-<a https://github.com/sssbohdan/CircularColorPickeravailable for iOS</a>
+<a https://github.com/sssbohdan/CircularColorPicker>Also available for iOS</a>
 
 
 <img src="https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true" width="400" height="711">
