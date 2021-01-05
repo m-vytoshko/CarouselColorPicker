@@ -1,9 +1,8 @@
 # CarouselColorPicker
-<img src="https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true" width="100" height="100">
+<img src="https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true" width="400" height="711">
 
 #### Latest version
 [![](https://jitpack.io/v/m-vytoshko/CarouselColorPicker.svg)](https://jitpack.io/#m-vytoshko/CarouselColorPicker)
-
 
 #### Implementation 
 Add it in your root build.gradle at the end of repositories:
@@ -18,4 +17,24 @@ allprojects {
 Add the dependency
 ```
 implementation("com.github.m-vytoshko:CarouselColorPicker:latestVersion")
+```
+
+### Customization
+##### To change colors:
+Implement ``` IPalette```
+##### To draw different selection cursor:
+Implement ``` IndicatorPainter```
+##### Set number of shadows:
+```
+
+ <com.mv.colorpicker.ColorPickerView
+        ...
+        app:shadesCount="5" />
+```
+##### Set shadow darkening step:
+```
+
+ <com.mv.colorpicker.ColorPickerView
+        ...
+        app:shadeRatio="0.05" />
 ```
