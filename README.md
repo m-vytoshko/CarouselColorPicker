@@ -1,6 +1,5 @@
 # CarouselColorPicker
-
-[![](https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true)](ShowCase)
+<img src="https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true" width="100" height="100">
 
 #### Latest version
 [![](https://jitpack.io/v/m-vytoshko/CarouselColorPicker.svg)](https://jitpack.io/#m-vytoshko/CarouselColorPicker)
