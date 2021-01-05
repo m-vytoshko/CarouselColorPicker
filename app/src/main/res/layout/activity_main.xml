@@ -7,20 +7,11 @@
     android:layout_height="match_parent"
     tools:context="com.mv.test_app.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.mv.colorpicker.ColorPickerView
         android:id="@+id/colorPicker"
-        app:shadesCount="5"
-        app:shadeRatio="0.05"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shadeRatio="0.05"
+        app:shadesCount="5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

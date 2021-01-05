@@ -100,6 +100,7 @@ class ColorPickerView @JvmOverloads constructor(
     }
 
     fun populate(newDataSet: Collection<Paint>) {
+        dataSet.clear()
         dataSet.addAll(newDataSet)
         invalidate()
     }
