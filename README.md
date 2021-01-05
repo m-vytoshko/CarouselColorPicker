@@ -1,8 +1,5 @@
 # CarouselColorPicker
 
-![test image size](/img/showcase.gif){:height="700px" width="400px"}
-
-[[https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif]]
 [![](https://github.com/m-vytoshko/CarouselColorPicker/blob/main/img/showcase.gif?raw=true)](ShowCase)
 
 #### Latest version
